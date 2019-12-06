@@ -1,0 +1,19 @@
+{
+  "raw_data": "1b180226b20701160232027f01285a",
+  "first_name": "somruk",
+  "last_name": "somruk",
+  "weight": 115.4,
+  "height": 180,
+  "age": 24,
+  "sex": "male",
+  "impedance": 383,
+  "bmi": 35.62,
+  "basal_metabolism": 2253.0,
+  "visceral_fat": 13.97,
+  "lean_body_mass": 74.6,
+  "body_fat": 36.05,
+  "water": 45.66,
+  "bone_mass": 3.77,
+  "muscle_mass": 70.03,
+  "protein": 15.04
+}
