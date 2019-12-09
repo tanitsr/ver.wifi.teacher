@@ -16,7 +16,7 @@ module.exports = NodeHelper.create({
 
 	readData: function(){
 		//to read a file to do the following
-		fs.readFile("modules/default/helloworld/input.txt", "utf8", (err, data) => {
+		fs.readFile("modules/default/helloworld/input_phonenumber.txt", "utf8", (err, data) => {
 			if (err) throw err;
 			this.sendSocketNotification("DATA", data);
 		});

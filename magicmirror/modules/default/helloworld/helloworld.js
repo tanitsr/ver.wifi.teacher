@@ -13,7 +13,7 @@ Module.register("helloworld",{
 	
 	// Default module config.
 	defaults: {
-		updateInterval: 3 * 1000
+		updateInterval: 500
 	},
 
 	start: function(){
@@ -32,15 +32,11 @@ Module.register("helloworld",{
 		//weight = 50;	
 		var wrapper = document.createElement("div");
 		if(this.dataFile){
-			var payload = this.dataFile.split("\n");
-			wrapper.innerHTML = payload[0] + "<br>" 
-			+ payload[1] + "<br>" + payload[2] + "<br>" +
-			payload[3] + "<br>" + payload[4] + "<br>" + 
-			payload[5] + "<br>" + payload[6] + "<br>" +
-			payload[7] + "<br>" + payload[8] + "<br>" + 
-			payload[9] + "<br>" + payload[10];						
+			var payload = this.dataFile.split("\n").join('');
+			wrapper.innerHTML = payload;				
 		}else{
-			wrapper.innerHTML = "No DATA!";
+			wrapper.innerHTML = "Please Input Phonenumber....";
+			wrapper.className = "small"
 		}
 		return wrapper;
 	}
