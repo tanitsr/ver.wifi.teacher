@@ -1,0 +1,21 @@
+{
+  "raw_data": "1b180226b20701190631056a01505a",
+  "first_name": "somruk",
+  "last_name": "chaiwai",
+  "phonenumber": "0987654321",
+  "weight": 115.6,
+  "height": 180,
+  "age": 23,
+  "sex": "male",
+  "impedance": 362,
+  "bmi": 35.68,
+  "basal_metabolism": 2264.96,
+  "visceral_fat": 13.84,
+  "lean_body_mass": 74.86,
+  "body_fat": 35.94,
+  "water": 45.74,
+  "bone_mass": 3.78,
+  "muscle_mass": 70.28,
+  "protein": 15.06,
+  "timestamp": "2019-12-09'T'20:13:14"
+}
