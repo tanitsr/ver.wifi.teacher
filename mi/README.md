@@ -45,11 +45,11 @@
 - save in user_payload JSON wait using in function metrics
 - call metrics function for calculation body values and save body values in user_payload JSON
 ### sent payload to MagicMirror via MQTT
-- sent payload to MagicMirror for show result  
+- sent payload to MagicMirror for show result  "topic:payload_user"
 ### sent payload to GCP via MQTT
-- set sent payload and sent to GCP vai MQTT
+- set sent payload and sent to GCP via MQTT "topic:fromMachine"
 ### Delay 
 ### sent payload via MQTT
-- sent payload for clear screen MagicMirror
+- sent payload for clear screen MagicMirror  "topic:detail_uesr , payload_user"
 
 ###### Last Commit : 060163
