@@ -1,5 +1,6 @@
 import smbus2 as smbus
 import time
+import os
 
 class keypad_module:
 
@@ -37,16 +38,30 @@ class keypad_module:
   def __init__(self,addr):
     self.I2CADDR = addr
 
+def resetFile():
+    path = os.path.join(os.path.expanduser('/home/pi'), 'MagicMirror' , 'modules','default','helloworld','input_phonenumber.txt')
+    f = open(path,'a+')
+    f.truncate(0)
+
+
 # test code
 def main():
   count = 0 
   keypad = keypad_module(0x20)
-  while count < 10:  
-    ch = keypad.getch()
-    print(ch)
-    count = count + 1
-    if ch == 'D':
-      exit()
+  ch = keypad.getch()
+  if ch == 'A':
+    print("Input")
+    while count < 10:  
+      ch = keypad.getch()
+      print(ch)
+      count = count + 1
+      print("len : " ,count)
+      path = os.path.join(os.path.expanduser('/home/pi'), 'MagicMirror' , 'modules','default','helloworld','input_phonenumber.txt')
+      with open(path, 'a') as the_file:
+        the_file.write(ch+'\n')
+      if ch == 'D':
+        resetFile()
+        count = 0
 
 # don't runt test code if we are imported
 if __name__ == '__main__':

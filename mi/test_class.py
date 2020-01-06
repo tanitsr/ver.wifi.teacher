@@ -20,5 +20,7 @@ if user_payload["bmi"] != None:
 
 y = json.dumps(x)
 print(y)
-publish.single("payload_user",y,qos=2,hostname="127.0.0.1",port=1883,auth={'username':"username"
-,'password':"raspberry"})
+publish.single("fromMachine",y,qos=2,hostname="35.192.38.248",port=1883,auth={'username':"pty7xkusrc"
+,'password':"{pty7}xKUSRC"})
+
+

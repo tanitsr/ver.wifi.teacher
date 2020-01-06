@@ -146,11 +146,16 @@ Module.register("MMM-MQTT", {
                     subWrapper.appendChild(labelWrapper);                    // Value
                     tooOld = self.isValueTooOld(sub.maxAgeSeconds, sub.time);
                     var valueWrapper = document.createElement("td");            
-                    //console.log(label);
+                    // Values
                     valueWrapper.innerHTML = sub.value[label];
                     valueWrapper.className = "align-right small mqtt-value" + (tooOld ? "dimmed" : "bright");
-                    subWrapper.appendChild(valueWrapper);                
-                wrapper.appendChild(subWrapper);
+                    subWrapper.appendChild(valueWrapper);
+                     // Suffix
+                    var suffixWrapper = document.createElement("td");
+                    suffixWrapper.innerHTML = sub.suffix;
+                    suffixWrapper.className = "align-left mqtt-suffix";
+                    subWrapper.appendChild(suffixWrapper);                
+                    wrapper.appendChild(subWrapper);
                 }else{
                     return wrapper;
                 }

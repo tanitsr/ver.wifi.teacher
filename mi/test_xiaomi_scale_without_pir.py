@@ -145,23 +145,30 @@ def main():
 def getPhonenumber():
     count = 0
     number = ""
-    keypad = keypad_module(0x20)
-    key = keypad.getch()
-    print("input phonenumber\n")
-    if(key == 'A'):
-        while count < 10:
-            key = keypad.getch()
-            number += key
-            path = os.path.join(os.path.expanduser('/home/pi'), 'MagicMirror' , 'modules','default','helloworld','input_phonenumber.txt')
-            with open(path, 'a') as the_file:
-                the_file.write(key+'\n')
-            print(key)
-            count = count + 1
-            if(key == 'D'):
-                resetFile() 
-                count = 0
-                number = ""
-    return number 
+    keypad = keypad_module(0x20)    
+    while True:
+        key = keypad.getch()
+        if(key == 'A'):
+            print("input")         
+            while True:
+                key = keypad.getch()
+                if(key != 'A' and key != 'D' and count < 10):                
+                    number += key
+                    path = os.path.join(os.path.expanduser('/home/pi'), 'MagicMirror' , 'modules','default','helloworld','input_phonenumber.txt')
+                    with open(path, 'a') as the_file:
+                        the_file.write(key+'\n')
+                    print(key)
+                    count = count + 1
+                elif(key == 'A' and count == 10):
+                    print("Next")
+                    return number
+                elif(key == 'D'):
+                    print("Clear")
+                    resetFile() 
+                    count = 0
+                    number = ""
+        else:
+            print("Plase ")
 
 
 def writeJsonInFile():
@@ -196,10 +203,8 @@ def metrics():
     user_payload["bone_mass"] = round(metrics.getBoneMass(),2)
     user_payload["muscle_mass"] = round(metrics.getMuscleMass(),2)
     user_payload["protein"] = round(metrics.getProteinPercentage(),2)
-    now = datetime.now()
-    dt_string = now.strftime("%Y-%m-%d'T'%H:%M:%S")
-    user_payload["timestamp"] = dt_string 
-    
+    user_payload["type"] = "teacher"
+   
     
 def readFromFirebase():
     import firebase_admin
@@ -259,6 +264,8 @@ def sentPayloadUserMQTT():
     sent = json.dumps(user_payload)
     publish.single("payload_user",sent,qos=2,hostname="127.0.0.1",port=1883,auth={'username':"username"
     ,'password':"raspberry"})
+    publish.single("fromMachine",sent,qos=2,hostname="35.192.38.248",port=1883,auth={'username':"pty7xkusrc"
+    ,'password':"{pty7}xKUSRC"})
 
 def sentProcessMQTT():
     x = {
@@ -300,13 +307,13 @@ if __name__ == "__main__":
         "bone_mass":None,
         "muscle_mass":None,
         "protein":None,
-        "timestamp":None
+        "type":None
     }
     
     while(True):
         lastpayload = readLastJson()
         print(lastpayload)
-        pirDetection()
+        #pirDetection()
         phonenumber = getPhonenumber()
         #phonenumber = input("Enter your phonenumber : ")
         readFromFirebase()
@@ -316,10 +323,10 @@ if __name__ == "__main__":
         metrics()
         print(json.dumps(user_payload, indent=4))
         writeJsonInFile()
-        writeRealTimeLoadToFirebase()
+        ##writeRealTimeLoadToFirebase()
         sentProcessMQTT()
         sentPayloadUserMQTT()
         resetFile() 
-        time.sleep(5)
+        time.sleep(30)
         sentClearMQTT()
 

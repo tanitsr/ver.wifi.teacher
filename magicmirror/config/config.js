@@ -131,47 +131,58 @@ var config = {
 						subscriptions: [
 							{
 								topic: 'payload_user', // Topic to look for
-								label: 'Weight', // Displayed in front of value
+								label: 'Weight',
+								suffix: 'kg' // Displayed in front of value
 							},
 							{
 								topic: 'payload_user', // Topic to look for
-								label: 'Height', // Displayed in front of value
+								label: 'Height',
+								suffix: 'cm' // Displayed in front of value
 							},
 							{
 								topic: 'payload_user', // Topic to look for
-								label: 'BMI', // Displayed in front of value
+								label: 'BMI',
+								suffix: 'kg/cm²' // Displayed in front of value
 							},
 							{
 								topic: 'payload_user', // Topic to look for
-								label: 'Basal Metabolism', // Displayed in front of value
+								label: 'Basal Metabolism',
+								suffix: 'calories/day' // Displayed in front of value
 							},
 							{
 								topic: 'payload_user', // Topic to look for
-								label: 'Visceral Fat', // Displayed in front of value
+								label: 'Visceral Fat',
+								suffix: 'cm²' // Displayed in front of value
 							},
 							{
 								topic: 'payload_user', // Topic to look for
-								label: 'Lean Body Mass', // Displayed in front of value
+								label: 'Lean Body Mass',
+								suffix: 'kg' // Displayed in front of value
 							},
 							{
 								topic: 'payload_user', // Topic to look for
-								label: 'Body Fat', // Displayed in front of value
+								label: 'Body Fat',
+								suffix: '%' // Displayed in front of value
 							},
 							{
 								topic: 'payload_user', // Topic to look for
-								label: 'Water', // Displayed in front of value
+								label: 'Water',
+								suffix: 'l' // Displayed in front of value
 							},
 							{
 								topic: 'payload_user', // Topic to look for
-								label: 'Bone Mass', // Displayed in front of value
+								label: 'Bone Mass',
+								suffix: 'kg' // Displayed in front of value
 							},
 							{
 								topic: 'payload_user', // Topic to look for
-								label: 'Muscle Mass', // Displayed in front of value
+								label: 'Muscle Mass',
+								suffix: 'kg' // Displayed in front of value
 							},
 							{
 								topic: 'payload_user', // Topic to look for
-								label: 'Protein', // Displayed in front of value
+								label: 'Protein',
+								suffix: 'kcal' // Displayed in front of value
 							},
 						]
 					}
