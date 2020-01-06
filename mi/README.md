@@ -1,14 +1,12 @@
-# **Check Point [Last : 91262]**
+# **Check Point [Last : 060362]**
 ## Tool <br>
 - python 3.7 
 ## Setup <br>
-- set PIR from detect <br>
 - set keypad for input <br>
 - sniffing packet from bluetooth protocol<br>
 - set MQTT publish from sent payload<br>
 - set get payload from firebase <br>
 - set JSON <br>
-- set timestamp <br>
 ### Import
 - argparse
 - binascii
@@ -27,65 +25,31 @@
 - datetime import datetime
 
 ## Function <br>
-- listen PIR detect<br>
-### PIR detect !!! <br>
-- read old payload JSON from file 
-- input phonenumber {size = 10}
+### input , write file , read file
+- press "A" for input number
+- enter input number from keypad {size = 10}
+>- number write to input.txt
+>- press "A" for input is done 
+>- press "D" for clear
+- read old payload JSON from file
+### read data with path{phonenumber} from RTDB
 - get data from firebase-realtime
-- sent MQTT "topic:detail_user"
+- sent payload to MagicMirror via MQTT "topic:detail_user"
 - next to sniffing
 ### sniffing packet from bluetooth 
 - check data in packet != raw data in old payload<br>
-# TO DO : WAIT EDIT MORE
-- get select mode page + function select mode<br>
-- get payload Student ID form firebase<br>
-- set payload Student ID {weight , height , bmi} of firebase <b>"meaning real-time"</b> <br>
-- get date from NTP Server when push json history <b>ONLY!</b> <br>
-- push json history payload {weight , height , bmi} with Etag timestamp (yyyy-mm-dd'T'hh:mm:ss) from NTP Server <b>"meaning history"</b><br>
-### Select mode <br>
-- before select mode show welcome page<br>
-- show select mode page <br>
-- "A" to online <br> 
-- "B" to offline <br>
-- in 30 sec if nothing turn off led 
-### Online <br>
-- read SSID , Password from EEPROM
-- if no wifi start wifimanager 
- > - get config wifi page {show SSID , Password for config} <br>
- > - start AP to config <br>
- > - get wifi connect when config finish <br>
-- if have wifimanager going !! 
-- get wifi connect when config finish
-- ID input by keypad + get ID data from firebase 
- > - input can reset everytime
- > - if input > ID : can't input and process <br>
- > - if input != int : can't input process 
-- show detail page user
-- show weight {2 time to success} 
- > - no weight in 30 sec back to select mode
-- height with input by keypad + push to height firebase  
- > - input can reset everytime
- > - if input > height (lock hundred point) : can't input and process 
- > - if input != int : can't input and process
-- show results BMI with image 
-> - bmi <= 18.5 {under}
-> - bmi > 18.5 && bmi <= 22.9 {healthy}
-> - bmi >= 23 && bmi <= 29.9 {over}
-> - bmi > 29.9 {obese}
-- set real-time , push history payload {weight , height , bmi} to firebase
-- in 30 sec back to select mode
-### Offline
-- show weight {2 time to success}
-> - no weight in 30 sec back to select mode
-- height with input by keypad 
- > - input can reset everytime
- > - if input > height (lock hundred point) : can't input and process 
- > - if input != int : can't input and process
-- show results BMI with image 
-> - bmi <= 18.5 {under}
-> - bmi > 18.5 && bmi <= 22.9 {healthy}
-> - bmi >= 23 && bmi <= 29.9 {over}
-> - bmi > 29.9 {obese}
-- in 30 sec back to select mode
+>- "true" next step 
+>- "false" loop 
+- get weight and impedacen from bluetooth 
+### calculation body values
+- save in user_payload JSON wait using in function metrics
+- call metrics function for calculation body values and save body values in user_payload JSON
+### sent payload to MagicMirror via MQTT
+- sent payload to MagicMirror for show result  
+### sent payload to GCP via MQTT
+- set sent payload and sent to GCP vai MQTT
+### Delay 
+### sent payload via MQTT
+- sent payload for clear screen MagicMirror
 
-###### Last Commit : 161162
+###### Last Commit : 060163
